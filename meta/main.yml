@@ -2,7 +2,7 @@
 galaxy_info:
   role_name: ansible
   author: arillso
-  description: Configures on a device Ansible or Configureit the access interface (WinRM).
+  description: Sets a scheduled task to ensure Ansible has access through WinRM interface.
   license: MIT
   min_ansible_version: 2.9
   platforms:
