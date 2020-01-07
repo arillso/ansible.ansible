@@ -4,6 +4,8 @@
 
 ## Description
 
+Configures on a device Ansible or Configureit the access interface (WinRM).
+
 ## Installation
 
 ```bash
@@ -30,8 +32,8 @@ ansible-galaxy install arillso.ansible
 
 ## License
 
-This project is under the MIT License. See the [LICENSE](https://sbaerlo.ch/licence) file for the full license text.
+This project is under the MIT License. See the [LICENSE](licence) file for the full license text.
 
 ## Copyright
 
-(c) 2019, Simon Bärlocher
+(c) 2020, Arillso

@@ -1,2 +1,30 @@
 ---
 # tasks file for arillso.ansible
+
+- name: 'ansible : Copy ConfigureRemotingForAnsible.ps1 to system'
+  win_get_url:
+    url: 'https://raw.githubusercontent.com/ansible/ansible/devel/examples/scripts/ConfigureRemotingForAnsible.ps1'
+    dest: '{{ ansible_directory }}\\ConfigureRemotingForAnsible.ps1'
+  tags:
+    - configuration
+
+- name: 'ansible : Configure WinRM from daily scheduled task'
+  win_scheduled_task:
+    name: ConfigureRemotingForAnsible
+    description: Run ConfigureRemotingForAnsible.ps1
+    start_when_available: true
+    multiple_instances: 2
+    hidden: true
+    enabled: true
+    actions:
+      - path: powershell.exe
+        working_directory: '{{ ansible_directory }}'
+        arguments: '{{ ansible_scheduled_task }}'
+    triggers:
+      - type: boot
+      - type: daily
+        start_boundary: '2017-10-09T09:00:00'
+    username: NT AUTHORITY\SYSTEM
+    wake_to_run: true
+  tags:
+    - configuration
