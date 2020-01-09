@@ -4,7 +4,7 @@
 
 ## Description
 
-Configure a task schedule that periodically runs ConfigureRemotingForAnsible.ps1 script.
+Sets a scheduled task to ensure Ansible has access through WinRM interface.
 
 ## Installation
 
