@@ -2,11 +2,7 @@
 galaxy_info:
   role_name: ansible
   author: arillso
-<<<<<<< HEAD
-  description: Configure a task schedule that periodically runs ConfigureRemotingForAnsible.ps1 script.
-=======
   description: Sets a scheduled task to ensure Ansible has access through WinRM interface.
->>>>>>> 4f7a9d71b8ae72ab5d0be58cc60fcf75351d570b
   license: MIT
   min_ansible_version: 2.9
   platforms:
