@@ -4,6 +4,8 @@
 
 ## Description
 
+Sets a scheduled task to ensure Ansible has access through WinRM interface.
+
 ## Installation
 
 ```bash
@@ -12,9 +14,40 @@ ansible-galaxy install arillso.ansible
 
 ## Requirements
 
+None
+
 ## Role Variables
 
-## Dependencies
+### ansible_ressource_name
+
+Name of the folder where the data will be stored.
+
+```yml
+ansible_ressource_name: "{{ source_of_supply_name | default('Support') }}"
+ansible_root_directory: "{{ ansible_env.SystemDrive }}\\{{ ansible_ressource_name }}"
+```
+
+### ansible_directory
+
+Whole path where the file should be stored
+
+```yml
+ansible_directory: "{{ ansible_root_directory }}\\ansible"
+```
+
+## ansible_configure_remoting
+
+Path where the Powershell script is stored.
+
+```yml
+ansible_configure_remoting: "{{ ansible_directory }}\\ConfigureRemotingForAnsible.ps1"
+```
+
+### ansible_scheduled_task
+
+```yml
+ansible_scheduled_task: '-ExecutionPolicy Bypass -File "{{ ansible_configure_remoting }}" -CertValidityDays 3650 -ForceNewSSLCert -EnableCredSSP'
+```
 
 ## Example Playbook
 
@@ -30,8 +63,8 @@ ansible-galaxy install arillso.ansible
 
 ## License
 
-This project is under the MIT License. See the [LICENSE](https://sbaerlo.ch/licence) file for the full license text.
+This project is under the MIT License. See the [LICENSE](licence) file for the full license text.
 
 ## Copyright
 
-(c) 2019, Simon Bärlocher
+(c) 2020, Arillso

@@ -1,10 +1,14 @@
 ---
 dependency:
   name: galaxy
+  options:
+    role-file: .requirements.yml
 driver:
   name: docker
 lint:
   name: yamllint
+  options:
+    config-file: .yamllint.yml
 platforms:
   - name: instance
     image: 'geerlingguy/docker-${MOLECULE_DISTRO:-centos7}-ansible:latest'

@@ -1,13 +1,13 @@
 ---
 # tasks file for arillso.ansible
 
-- name: add OS specific variables
+- name: 'Add OS specific variables'
   include_vars: '{{ loop_vars }}'
   with_first_found:
     - files:
-        - '{{ distribution }}-{{ distribution_verion }}.yml'
-        - '{{ distribution }}-{{ distribution_major_version }}.yml'
-        - '{{ distribution }}.yml'
+        - '{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml'
+        - '{{ ansible_distribution }}-{{ ansible_distribution_major_version }}.yml'
+        - '{{ ansible_distribution }}.yml'
         - '{{ ansible_os_family }}.yml'
         - '{{ ansible_system }}.yml'
         - 'defaults.yml'
@@ -15,21 +15,17 @@
         - 'vars'
   loop_control:
     loop_var: loop_vars
-  vars:
-    distribution: '{{ ansible_distribution }}'
-    distribution_verion: '{{ ansible_distribution_version }}'
-    distribution_major_version: '{{ ansible_distribution_major_version }}'
   tags:
     - configuration
     - packages
 
-- name: include distribution tasks
+- name: 'Include distribution tasks'
   include_tasks: '{{ loop_distribution }}'
   with_first_found:
     - files:
-        - '{{ distribution }}-{{ distribution_verion }}.yml'
-        - '{{ distribution }}-{{ distribution_major_version }}.yml'
-        - '{{ distribution }}.yml'
+        - '{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml'
+        - '{{ ansible_distribution }}-{{ ansible_distribution_major_version }}.yml'
+        - '{{ ansible_distribution }}.yml'
         - '{{ ansible_os_family }}.yml'
         - '{{ ansible_system }}.yml'
         - 'defaults.yml'
@@ -37,10 +33,6 @@
         - 'distribution'
   loop_control:
     loop_var: loop_distribution
-  vars:
-    distribution: '{{ ansible_distribution }}'
-    distribution_verion: '{{ ansible_distribution_version }}'
-    distribution_major_version: '{{ ansible_distribution_major_version }}'
   tags:
     - configuration
     - packages
