@@ -2,9 +2,9 @@
 # defaults file for arillso.ansible
 
 # Name of the folder where the data will be stored.
-ansible_ressourcen_name: "{{ source_of_supply_name | default('Support') }}"
+ansible_ressource_name: "{{ source_of_supply_name | default('Support') }}"
 
-ansible_root_directory: "{{ ansible_env.SystemDrive }}\\{{ ansible_ressourcen_name }}"
+ansible_root_directory: "{{ ansible_env.SystemDrive }}\\{{ ansible_ressource_name }}"
 
 # Whole path where the file should be stored
 ansible_directory: "{{ ansible_root_directory }}\\ansible"

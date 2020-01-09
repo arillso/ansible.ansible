@@ -4,7 +4,7 @@
 
 ## Description
 
-Configures on a device Ansible or Configureit the access interface (WinRM).
+Configure a task schedule that periodically runs ConfigureRemotingForAnsible.ps1 script.
 
 ## Installation
 
@@ -14,9 +14,40 @@ ansible-galaxy install arillso.ansible
 
 ## Requirements
 
+None
+
 ## Role Variables
 
-## Dependencies
+### ansible_ressource_name
+
+Name of the folder where the data will be stored.
+
+```yml
+ansible_ressource_name: "{{ source_of_supply_name | default('Support') }}"
+ansible_root_directory: "{{ ansible_env.SystemDrive }}\\{{ ansible_ressource_name }}"
+```
+
+### ansible_directory
+
+Whole path where the file should be stored
+
+```yml
+ansible_directory: "{{ ansible_root_directory }}\\ansible"
+```
+
+## ansible_configure_remoting
+
+Path where the Powershell script is stored.
+
+```yml
+ansible_configure_remoting: "{{ ansible_directory }}\\ConfigureRemotingForAnsible.ps1"
+```
+
+### ansible_scheduled_task
+
+```yml
+ansible_scheduled_task: '-ExecutionPolicy Bypass -File "{{ ansible_configure_remoting }}" -CertValidityDays 3650 -ForceNewSSLCert -EnableCredSSP'
+```
 
 ## Example Playbook
 
