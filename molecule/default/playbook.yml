@@ -1,1 +1,6 @@
 ---
+- name: Converge
+  hosts: all
+  pre_tasks:
+    debug:
+      msg: 'Test'
