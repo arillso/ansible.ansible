@@ -3,11 +3,6 @@
   hosts: all
   pre_tasks:
     - name: Installation required software
-      import_role:
-        name: itigoag.packages
-      vars:
-        packages:
-          python3-pip:
-            version: latest
+      shell: pip install jmespath
   roles:
     - role: arillso.ansible
