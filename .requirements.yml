@@ -1,3 +1,6 @@
 ---
 - name: sbaerlocher.source_of_supply
   src: sbaerlocher.source_of_supply
+
+- name: itigoag.packages
+  src: itigoag.packages

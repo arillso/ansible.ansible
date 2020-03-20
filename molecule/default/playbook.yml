@@ -1,5 +1,6 @@
 ---
 - name: Converge
   hosts: all
-  roles:
-    - role: arillso.ansible
+  pre_tasks:
+    - debug:
+        msg: 'Test'
