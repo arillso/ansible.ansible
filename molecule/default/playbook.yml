@@ -1,6 +1,1 @@
 ---
-- name: Converge
-  hosts: all
-  pre_tasks:
-    - name: Installation required software
-      shell: pip install jmespath
