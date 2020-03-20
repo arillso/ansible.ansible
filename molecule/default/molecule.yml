@@ -5,10 +5,9 @@ dependency:
     role-file: .requirements.yml
 driver:
   name: docker
-lint:
-  name: yamllint
-  options:
-    config-file: .yamllint.yml
+lint: |
+  set -e
+  yamllint . -c .yamllint.yml
 platforms:
   - name: instance
     image: 'geerlingguy/docker-${MOLECULE_DISTRO:-centos7}-ansible:latest'

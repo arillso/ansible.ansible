@@ -5,6 +5,10 @@ and [human-readable changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## 1.1.0
 
+### Fixed
+
+- Fixed Molecule Tests
+
 ### Added
 
 - Add Linux Support
