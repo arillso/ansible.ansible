@@ -2,6 +2,7 @@
 # tasks file for arillso.ansible
 
 - name: 'Linux : Install ansible'
+  become: true
   pip:
     name: ansible
     executable: pip3
